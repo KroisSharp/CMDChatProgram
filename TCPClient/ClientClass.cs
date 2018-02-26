@@ -44,7 +44,7 @@ namespace TCPClient
                 while (true)
                 {
                     string incstr = sr.ReadLine();
-                    Console.WriteLine(incstr);
+                    Console.WriteLine("Server: " + incstr);
                 }
 
             }
