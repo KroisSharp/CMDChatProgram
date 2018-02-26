@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TCPServer
+namespace TCPClient
 {
     class Program
     {
         private static readonly int PORT = 9000;
         static void Main(string[] args)
         {
-            ServerClass server = new ServerClass(PORT);
-            server.Start();
+
+            ClientClass client = new ClientClass(PORT);
+            client.Start();
 
             Console.ReadLine();
         }
