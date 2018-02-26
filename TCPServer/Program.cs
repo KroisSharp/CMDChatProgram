@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,8 +27,22 @@ namespace TCPServer
             Console.WriteLine(title);
 
             Console.Title = "Server";
+
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    Console.WriteLine("Servers IPV4 adresse: " + ip);
+
+                }
+            }
+
             Console.WriteLine("Klar");
             #endregion
+
+
+
 
             ServerClass server = new ServerClass(PORT);
             server.Start();

@@ -27,12 +27,18 @@ namespace TCPClient
             Console.WriteLine(title);
 
             Console.Title = "Client";
-            Console.WriteLine("Klar");
+            
             #endregion
 
+            Console.WriteLine("Skriv Server IP adresse fx: 192.168.1.3");
+            Console.WriteLine("brug evt ipconfig på server computer og se IPV4 adresse");
+            string userIPinput = Console.ReadLine();
 
-            ClientClass client = new ClientClass(PORT);
+            ClientClass client = new ClientClass(PORT, userIPinput);
             client.Start();
+            Console.Clear();
+            Console.WriteLine(title);
+            Console.WriteLine("connected");
 
             Console.ReadLine();
         }

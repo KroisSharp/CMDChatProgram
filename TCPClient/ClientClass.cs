@@ -12,15 +12,17 @@ namespace TCPClient
     class ClientClass
     {
         private readonly int PORT;
+        private readonly string IPADRESSE;
 
         //ctor husk at lav navnet om
-        public ClientClass(int port)
+        public ClientClass(int port, string ipadresse)
         {
             this.PORT = port;
+            this.IPADRESSE = ipadresse;
         }
         public void Start()
         {
-            TcpClient client = new TcpClient("localhost", PORT);
+            TcpClient client = new TcpClient(IPADRESSE, PORT);
 
            
             Thread t1 = new Thread(() => DoReadClient(client));
