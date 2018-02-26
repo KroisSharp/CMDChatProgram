@@ -9,35 +9,24 @@ namespace TCPClient
     class Program
     {
 
-
+        
 
         private static readonly int PORT = 9000;
         static void Main(string[] args)
         {
-            #region Start up
-
-            string title = @"   _____ _ _            _   
-  / ____| (_)          | |  
- | |    | |_  ___ _ __ | |_ 
- | |    | | |/ _ \ '_ \| __|
- | |____| | |  __/ | | | |_ 
-  \_____|_|_|\___|_| |_|\__|
-";
-
-            Console.WriteLine(title);
-
             Console.Title = "Client";
-            
-            #endregion
+            PrinterClass printer = new PrinterClass();
+            printer.Title();
+            printer.HowTo();
 
-            Console.WriteLine("Skriv Server IP adresse fx: 192.168.1.3");
-            Console.WriteLine("brug evt ipconfig på server computer og se IPV4 adresse");
+
             string userIPinput = Console.ReadLine();
 
             ClientClass client = new ClientClass(PORT, userIPinput);
             client.Start();
+
             Console.Clear();
-            Console.WriteLine(title);
+            printer.Title();
             Console.WriteLine("connected");
 
             Console.ReadLine();

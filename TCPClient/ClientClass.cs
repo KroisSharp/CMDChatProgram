@@ -14,7 +14,7 @@ namespace TCPClient
         private readonly int PORT;
         private readonly string IPADRESSE;
 
-        //ctor husk at lav navnet om
+        
         public ClientClass(int port, string ipadresse)
         {
             this.PORT = port;

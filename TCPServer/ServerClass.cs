@@ -13,10 +13,8 @@ namespace TCPServer
     {
         private readonly int PORT;
 
-        //lav vores threads her start dem i doclient
 
-
-        //husk at ændre navn
+        
         public ServerClass(int port)
         {
             this.PORT = port;
@@ -40,7 +38,7 @@ namespace TCPServer
         }
         private static void DoClient(TcpClient client)
         {
-           
+            Console.WriteLine("Client connected");
             Thread t1 = new Thread(() => DoReadClient(client));
             Thread t2 = new Thread(() => DowriteClient(client));
             t1.Start();
@@ -50,7 +48,7 @@ namespace TCPServer
         }
 
 
-        //thead til at køre read
+
 
         public static void DoReadClient(TcpClient client)
         {
