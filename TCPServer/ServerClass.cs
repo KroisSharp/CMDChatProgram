@@ -40,12 +40,12 @@ namespace TCPServer
         }
         private static void DoClient(TcpClient client)
         {
-            Console.WriteLine("DoClient");
+           
             Thread t1 = new Thread(() => DoReadClient(client));
             Thread t2 = new Thread(() => DowriteClient(client));
             t1.Start();
             t2.Start();
-            Console.WriteLine("efter thread");
+           
 
         }
 
@@ -57,7 +57,7 @@ namespace TCPServer
             using (NetworkStream ns = client.GetStream())
             using (StreamReader sr = new StreamReader(ns))
             {
-                Console.WriteLine("DoReadClient thread køre");
+                
                 while (true)
                 {
                     string incstr = sr.ReadLine();
@@ -72,7 +72,7 @@ namespace TCPServer
             using (NetworkStream ns = client.GetStream())
             using (StreamWriter sw = new StreamWriter(ns))
             {
-                Console.WriteLine("DoWriteClient thead køre");
+               
                 sw.AutoFlush = true;
                 while (true)
                 {

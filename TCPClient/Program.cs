@@ -11,7 +11,7 @@ namespace TCPClient
         private static readonly int PORT = 9000;
         static void Main(string[] args)
         {
-
+            Console.WriteLine("DETTE ER CLIENT");
             ClientClass client = new ClientClass(PORT);
             client.Start();
 
