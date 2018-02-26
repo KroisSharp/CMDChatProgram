@@ -1,73 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace TCPClient
 {
-    class ClientClass
+    internal class ClientClass
     {
-        private readonly int PORT;
         private readonly string IPADRESSE;
+        private readonly int PORT;
 
-        
+
         public ClientClass(int port, string ipadresse)
         {
-            this.PORT = port;
-            this.IPADRESSE = ipadresse;
+            PORT = port;
+            IPADRESSE = ipadresse;
         }
+
         public void Start()
         {
-            TcpClient client = new TcpClient(IPADRESSE, PORT);
-
-           
-            Thread t1 = new Thread(() => DoReadClient(client));
-            Thread t2 = new Thread(() => DowriteClient(client));
+            var client = new TcpClient(IPADRESSE, PORT);
+            var t1 = new Thread(() => DoReadClient(client));
+            var t2 = new Thread(() => DowriteClient(client));
             t1.Start();
             t2.Start();
-           
-
-
-
-
-
         }
 
         public static void DoReadClient(TcpClient client)
         {
-            using (NetworkStream ns = client.GetStream())
-            using (StreamReader sr = new StreamReader(ns))
+            using (var ns = client.GetStream())
+            using (var sr = new StreamReader(ns))
             {
-                
                 while (true)
                 {
-                    string incstr = sr.ReadLine();
+                    var incstr = sr.ReadLine();
                     Console.WriteLine("Server: " + incstr);
                 }
-
             }
         }
 
         private static void DowriteClient(TcpClient client)
         {
-            using (NetworkStream ns = client.GetStream())
-            using (StreamWriter sw = new StreamWriter(ns))
+            using (var ns = client.GetStream())
+            using (var sw = new StreamWriter(ns))
             {
-                
                 sw.AutoFlush = true;
                 while (true)
                 {
-                    string userinput = Console.ReadLine();
+                    var userinput = Console.ReadLine();
                     sw.WriteLine(userinput);
                 }
             }
-
         }
-
-
     }
 }

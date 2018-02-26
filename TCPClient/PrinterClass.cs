@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TCPClient
 {
-    class PrinterClass
+    internal class PrinterClass
     {
         public void Title()
         {
-            string title = @"   _____ _ _            _   
+            var title = @"   _____ _ _            _   
   / ____| (_)          | |  
  | |    | |_  ___ _ __ | |_ 
  | |    | | |/ _ \ '_ \| __|
